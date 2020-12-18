@@ -143,6 +143,19 @@ function getPasswordByDev(){
 
 function getPasswordByUser(){
 
+    if(!isLowerCase.checked && !isUpperCase.checked && !isNumber.checked && !isSymbol.checked){
+        alert('set your password pattern');
+        document.reset();
+    }
+    if(!pwLength.value){
+        alert('Set your password length');
+        document.reset();
+    }
+    if(pwLength.value<Number(pwLength.min) || pwLength.value>Number(pwLength.max)){
+        alert(`insert length between ${pwLength.min} and ${pwLength.max}`);
+        document.reset();
+    }
+
     //get random character
     let temp = '';
     for(let i = 0; i<pwLength.value; i++) {
@@ -217,14 +230,6 @@ function getCharacterByUser(){
         if(isNumber.checked) {
             ans += getNumber();
         }
-    }
-    if(!isLowerCase.checked && !isUpperCase.checked && !isNumber.checked && !isSymbol.checked){
-        alert('set your password pattern');
-        document.reset();
-    }
-    if(pwLength.value<Number(pwLength.min) || pwLength.value>Number(pwLength.max)){
-        alert(`insert length between ${pwLength.min} and ${pwLength.max}`);
-        document.reset();
     }
     return ans;
 }
